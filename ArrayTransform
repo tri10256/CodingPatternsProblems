@@ -1,0 +1,28 @@
+1. Transform an origianl array to arr[arr[i]] or any deep sequence like this.
+
+original :- 4 0 3 1 2
+Transformeted:- 2 4 1 0 3 
+
+Logic:- We can calculate a new number which can store the information of two numbers at a time and with the help of division and modulo we can retreive back both numbers.
+ex: a = 2, b = 3 n = 5.
+c = a+b*n  = 17
+Retrieval:
+a = c%n = 17%5 = 2;
+b = c/n = 17/5 = 3;
+
+In this problem:=
+a = arr[i]
+b = arr[arr[i]]
+
+The arrange function looks like this:
+void arrange(vector<int>arr,n){
+
+//first iteraton save the c number
+for(int i = 0;i<n;i++)
+ arr[i] = arr[i]+ (arr[arr[i]]%n)*n
+
+//second iteration give the required b umber
+for(int i = 0;i<n;i++)
+  arr[i] /=n;
+}
+
