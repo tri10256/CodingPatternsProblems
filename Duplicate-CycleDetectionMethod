@@ -1,0 +1,31 @@
+Detect duplicate in an array in which 1->n numbers are present from whcih one of the number gets duplicate find the number.
+Sol:- Detect the cycle tread the nums[i] as the nodes of linked list. If the array have duplicate number than there will be a moment when the slow pointer and fast pointer will become 
+equal. Then find the first node from which cycle starts.
+https://leetcode.com/problems/find-the-duplicate-number/submissions/669656336/
+
+class Solution {
+public:
+ 
+    int findDuplicate(vector<int>& nums) {
+       //Cycle Detection method
+        
+        int slow = nums[0];
+        int fast = nums[0];
+        
+        do{
+              slow = nums[slow];
+            fast = nums[nums[fast]];
+        }
+        while(slow!=fast);
+
+        
+        fast = nums[0];
+        
+        while(slow!=fast){
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        
+        return slow;
+    }
+};
